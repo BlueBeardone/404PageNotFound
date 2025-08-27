@@ -1,2 +1,15 @@
-# 404PageNotFound
-A 404 Page not found that is annoying to use
+## Features of this Terrible 404 Page
+- Automatically goes fullscreen when loaded
+- Safety exit button in the bottom right corner
+- Rainbow animated background that never stops
+- Blinking text and shaking elements
+- Annoying sound effects using the Web Audio API
+- Random popup alerts
+- Fake redirect buttons
+- Moving buttons that are hard to click
+- Disabled right-click and keyboard shortcuts
+- Cursor trails that follow your mouse
+- Confetti falling constantly
+- Marquee text that scrolls across the screen
+- Comic Sans and Papyrus fonts (the worst typography)
+- Clashing colors and distracting animations
