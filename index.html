@@ -174,48 +174,6 @@
             cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🤮</text></svg>"), auto;
         }
         
-        .safety-exit {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 10000;
-            background: #00ff00;
-            color: #000;
-            padding: 15px;
-            border: 5px solid #000;
-            border-radius: 10px;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 0 0 20px #000;
-        }
-        
-        .safety-exit:hover {
-            background: #ff0000;
-            color: #fff;
-        }
-        
-        .fullscreen-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-        }
-        
-        .fullscreen-message {
-            background: #fff;
-            padding: 30px;
-            border: 10px solid #f00;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 80%;
-        }
-        
         .mode-indicator {
             position: fixed;
             top: 10px;
@@ -227,10 +185,58 @@
             font-weight: bold;
             z-index: 1000;
         }
+        
+        .fake-address-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #333;
+            color: #fff;
+            padding: 8px;
+            font-family: monospace;
+            z-index: 1000;
+            display: flex;
+        }
+        
+        .fake-url {
+            flex-grow: 1;
+            background: #fff;
+            color: #000;
+            padding: 5px;
+            margin: 0 10px;
+            border-radius: 2px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .fake-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .fake-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .fake-button.close { background: #ff5f57; }
+        .fake-button.minimize { background: #ffbd2e; }
+        .fake-button.maximize { background: #28c940; }
     </style>
 </head>
 <body class="cursor-changing">
-    <div class="mode-indicator">FULLSCREEN MODE ACTIVATED</div>
+    <div class="fake-address-bar">
+        <div class="fake-buttons">
+            <div class="fake-button close"></div>
+            <div class="fake-button minimize"></div>
+            <div class="fake-button maximize"></div>
+        </div>
+        <div class="fake-url">https://www.insufferable-404-page.com/this-page-does-not-exist</div>
+    </div>
+    
+    <div class="mode-indicator">MAXIMUM ANNOYANCE MODE ACTIVATED</div>
     
     <div class="container">
         <h1>4<span class="emoji">🤔</span>4</h1>
@@ -251,6 +257,7 @@
                 <option value="rainbow">Rainbow Mode</option>
                 <option value="strobe">Strobe Mode</option>
                 <option value="spiral">Spiral Mode</option>
+                <option value="invert">Invert Colors</option>
             </select>
             
             <input type="text" placeholder="Search for what you wanted?" onkeypress="if(event.key==='Enter') searchRedirect(this.value)">
@@ -264,16 +271,11 @@
         </p>
     </div>
 
-    <div class="safety-exit" onclick="exitPage()">
-        SAFETY EXIT
-    </div>
-
     <script>
         // JavaScript intentionally made difficult to read and follow
         document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => { 
                 alert('This page doesn\'t exist! Why are you here?'); 
-                enterFullscreen();
             }, 1000);
             
             createCursorTrail();
@@ -291,40 +293,6 @@
             document.body.style.overflow = 'hidden';
             window.addEventListener('scroll', preventScroll);
         });
-        
-        function enterFullscreen() {
-            const elem = document.documentElement;
-            if (elem.requestFullscreen) {
-                elem.requestFullscreen().catch(err => {
-                    console.log('Fullscreen error:', err);
-                });
-            } else if (elem.mozRequestFullScreen) {
-                elem.mozRequestFullScreen();
-            } else if (elem.webkitRequestFullscreen) {
-                elem.webkitRequestFullscreen();
-            } else if (elem.msRequestFullscreen) {
-                elem.msRequestFullscreen();
-            }
-        }
-        
-        function exitPage() {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
-            
-            // Try to close the window (may not work in all browsers)
-            if (window.history.length > 1) {
-                window.history.back();
-            } else {
-                window.location.href = "about:blank";
-            }
-        }
         
         function preventScroll(e) {
             e.preventDefault();
@@ -511,8 +479,11 @@
                 document.body.style.animation = 'none';
                 document.body.style.backgroundImage = 'repeating-radial-gradient(circle, red, yellow 10%, green 20%)';
                 document.body.style.animation = 'rnbw 1s linear infinite';
+            } else if (mode === 'invert') {
+                document.body.style.filter = 'invert(1)';
             } else {
                 document.body.style.animation = 'rnbw 1.7s linear infinite';
+                document.body.style.filter = 'none';
             }
         }
 
