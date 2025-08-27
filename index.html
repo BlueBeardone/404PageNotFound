@@ -3,73 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - The Worst Page You've Ever Seen</title>
+    <title>404 - Page Not Found (Unfortunately)</title>
     <style>
-        /* Inline styles for maximum annoyance */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: all 0.5s ease-in-out;
+        /* CSS designed to be as confusing as possible */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            transition: all 0.3s ease-in-out;
         }
         
-        body {
-            font-family: "Comic Sans MS", "Papyrus", cursive;
-            background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-            background-size: 1800% 1800%;
-            animation: rainbow 18s ease infinite;
-            color: #000;
+        html, body {
+            width: 100%;
+            height: 100%;
             overflow: hidden;
-            width: 100vw;
-            height: 100vh;
+            font-family: "Comic Sans MS", "Papyrus", cursive;
         }
         
-        @keyframes rainbow { 
-            0% { background-position: 0% 82% ; }
-            50% { background-position: 100% 19% ; }
-            100% { background-position: 0% 82% ; }
+        body { 
+            background: linear-gradient(90deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+            background-size: 1400% 100%;
+            animation: rnbw 1.7s linear infinite;
+            color: rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
         
-        .container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(1deg);
+        @keyframes rnbw { 
+            0% { background-position: 0% 50%; } 
+            100% { background-position: 100% 50%; } 
+        }
+        
+        .container { 
             text-align: center;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            border: 15px dotted #ff00ff;
-            border-radius: 70px 10px 70px 10px;
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            background: rgba(255,255,255,0.94);
+            border: 17px dotted pink;
+            border-radius: 50px 0 50px 0;
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.5), -20px -20px 60px rgba(255,255,255,0.5);
             max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+            position: relative;
         }
         
         h1 {
-            font-size: 8rem;
-            text-shadow: 5px 5px 0 #ff0, -5px -5px 0 #f0f;
-            margin-bottom: 30px;
+            font-size: 7rem;
+            text-shadow: 4px 4px 0 #ff0, -4px -4px 0 #f0f;
+            margin-bottom: 20px;
             animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) infinite;
             transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            perspective: 1000px;
         }
         
         @keyframes shake {
-            10%, 90% { transform: translate3d(-2px, 0, 0) rotate(-2deg); }
-            20%, 80% { transform: translate3d(4px, 0, 0) rotate(4deg); }
-            30%, 50%, 70% { transform: translate3d(-6px, 0, 0) rotate(-6deg); }
-            40%, 60% { transform: translate3d(6px, 0, 0) rotate(6deg); }
+            10%, 90% { transform: translate3d(-1px, 0, 0) rotate(-1deg); }
+            20%, 80% { transform: translate3d(2px, 0, 0) rotate(2deg); }
+            30%, 50%, 70% { transform: translate3d(-3px, 0, 0) rotate(-3deg); }
+            40%, 60% { transform: translate3d(3px, 0, 0) rotate(3deg); }
         }
         
         p {
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            line-height: 1.6;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            color: #000;
         }
         
         .blink {
-            animation: blink 0.9s steps(2, start) infinite;
+            animation: blink 0.7s steps(2, start) infinite;
             color: #f00;
             font-weight: bold;
-            font-size: 2rem;
         }
         
         @keyframes blink {
@@ -78,22 +89,23 @@
         
         .btn {
             display: inline-block;
-            padding: 18px 35px;
-            margin: 15px;
+            padding: 15px 30px;
+            margin: 10px;
             background: linear-gradient(to bottom, #ff9999 0%, #ff0000 100%);
-            border: 7px groove #ff0;
-            border-radius: 60px;
+            border: 5px groove #ccc;
+            border-radius: 50px;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             cursor: pointer;
             text-decoration: none;
-            text-shadow: 2px 2px 4px #000;
+            transition: all 0.3s;
             animation: pulse 2s infinite;
+            text-shadow: 2px 2px 4px #000;
         }
         
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.1) rotate(5deg); }
+            50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
         
@@ -103,31 +115,45 @@
         }
         
         .marquee {
-            margin: 35px 0;
+            margin: 30px 0;
             white-space: nowrap;
             overflow: hidden;
             box-sizing: border-box;
-            background: #ff0;
-            padding: 15px;
-            border: 5px solid #f0f;
         }
         
         .marquee span {
             display: inline-block;
             padding-left: 100%;
-            animation: marquee 20s linear infinite;
-            font-size: 1.8rem;
-            font-weight: bold;
+            animation: marquee 15s linear infinite;
         }
         
         @keyframes marquee {
-            0% { transform: translate(0, 0); }
+            0%   { transform: translate(0, 0); }
             100% { transform: translate(-100%, 0); }
         }
         
+        .cursor-trail {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 0, 0.7);
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: 9999;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0.7;
+        }
+        
         .emoji {
-            font-size: 2.5rem;
-            animation: spin 5s linear infinite;
+            font-size: 2rem;
+            animation: spin 4s linear infinite;
             display: inline-block;
         }
         
@@ -137,23 +163,22 @@
         
         select, input {
             font-family: "Comic Sans MS", cursive;
-            padding: 12px;
-            margin: 12px;
-            border: 5px wavy #ff0;
+            padding: 10px;
+            margin: 10px;
+            border: 3px wavy #ff0;
             background: #ffc;
             color: #300;
-            font-size: 1.2rem;
         }
         
         .cursor-changing *:hover {
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🤢</text></svg>"), auto;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🤮</text></svg>"), auto;
         }
         
         .safety-exit {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 9999;
+            z-index: 10000;
             background: #00ff00;
             color: #000;
             padding: 15px;
@@ -169,75 +194,69 @@
             color: #fff;
         }
         
-        .confetti {
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background-color: #f00;
-            opacity: 0.8;
-            animation: confetti-fall 5s linear infinite;
-        }
-        
-        @keyframes confetti-fall {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-        
-        .cursor-trail {
-            position: absolute;
-            width: 25px;
-            height: 25px;
-            border-radius: 50%;
-            background: rgba(255, 255, 0, 0.7);
-            pointer-events: none;
-            mix-blend-mode: difference;
-            z-index: 9999;
-        }
-        
-        .fullscreen-message {
+        .fullscreen-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+        }
+        
+        .fullscreen-message {
+            background: #fff;
+            padding: 30px;
+            border: 10px solid #f00;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 80%;
+        }
+        
+        .mode-indicator {
+            position: fixed;
+            top: 10px;
+            left: 10px;
             background: #ff0;
             color: #f00;
-            text-align: center;
             padding: 10px;
+            border-radius: 5px;
             font-weight: bold;
-            z-index: 10000;
-            animation: blink 1s infinite;
+            z-index: 1000;
         }
     </style>
 </head>
 <body class="cursor-changing">
-    <div class="fullscreen-message">FULLSCREEN MODE ACTIVATED! HAVE A NICE DAY! 😊</div>
+    <div class="mode-indicator">FULLSCREEN MODE ACTIVATED</div>
     
     <div class="container">
-        <h1>4<span class="emoji">🤪</span>4</h1>
+        <h1>4<span class="emoji">🤔</span>4</h1>
         <div class="marquee">
             <span>⚠️ PAGE NOT FOUND ⚠️ YOU SEEM LOST ⚠️ THIS IS AWKWARD ⚠️ MAYBE TRY AGAIN? ⚠️ OR DON'T ⚠️ I'M JUST A WEBPAGE ⚠️</span>
         </div>
         <p>Oopsie-doodle! Looks like you took a wrong turn at Albuquerque!</p>
         <p class="blink">ERROR: PAGE_NOT_FOUND | CODE: 0xDEADBEEF | PLEASE STAND BY</p>
         
-        <div style="margin: 25px;">
+        <div style="margin: 20px;">
             <button class="btn" onclick="fakeRedirect()">Go Back</button>
             <button class="btn" onclick="location.reload()">Reload Page</button>
             <button class="btn" onclick="askForHelp()">Get Help</button>
         </div>
         
-        <div style="margin: 25px;">
+        <div style="margin: 20px;">
             <select onchange="changeBackground(this.value)">
                 <option value="rainbow">Rainbow Mode</option>
                 <option value="strobe">Strobe Mode</option>
                 <option value="spiral">Spiral Mode</option>
-                <option value="invert">Invert Colors</option>
             </select>
             
             <input type="text" placeholder="Search for what you wanted?" onkeypress="if(event.key==='Enter') searchRedirect(this.value)">
         </div>
         
-        <p style="margin-top: 35px; font-size: 1.1rem;">
+        <p style="margin-top: 30px; font-size: 0.9rem;">
             <span class="emoji">🔍</span> 
             Try checking for typos in the URL, or 
             <a href="javascript:void(0)" onclick="annoyingRedirect()" style="color: #f00; text-decoration: underline wavy;">click here</a> 
@@ -267,8 +286,12 @@
             startMovingElements();
             setInterval(changeText, 5000);
             setInterval(changeTitle, 3000);
+            
+            // Prevent scrolling
+            document.body.style.overflow = 'hidden';
+            window.addEventListener('scroll', preventScroll);
         });
-
+        
         function enterFullscreen() {
             const elem = document.documentElement;
             if (elem.requestFullscreen) {
@@ -302,9 +325,15 @@
                 window.location.href = "about:blank";
             }
         }
+        
+        function preventScroll(e) {
+            e.preventDefault();
+            window.scrollTo(0, 0);
+            return false;
+        }
 
         function createCursorTrail() {
-            for (let i = 0; i < 25; i++) {
+            for (let i = 0; i < 20; i++) {
                 let trail = document.createElement('div');
                 trail.className = 'cursor-trail';
                 document.body.appendChild(trail);
@@ -320,10 +349,10 @@
                 posX += (mouseX - posX) / 10;
                 posY += (mouseY - posY) / 10;
                 trails.forEach(function(trail, i) {
-                    trail.style.left = (posX - 12) + 'px';
-                    trail.style.top = (posY - 12) + 'px';
-                    trail.style.backgroundColor = `hsl(${i * 15}, 100%, 50%)`;
-                    trail.style.transform = `scale(${i / 25})`;
+                    trail.style.left = (posX - 10) + 'px';
+                    trail.style.top = (posY - 10) + 'px';
+                    trail.style.backgroundColor = `hsl(${i * 18}, 100%, 50%)`;
+                    trail.style.transform = `scale(${i / 20})`;
                 });
                 requestAnimationFrame(updateTrails);
             }
@@ -339,8 +368,8 @@
                 confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
                 confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
                 document.body.appendChild(confetti);
-                setTimeout(() => { confetti.remove(); }, 5000);
-            }, 150);
+                setTimeout(() => { confetti.remove(); }, 2000);
+            }, 100);
         }
 
         function playAnnoyingSound() {
@@ -349,11 +378,11 @@
                 setInterval(() => {
                     let oscillator = audioContext.createOscillator();
                     oscillator.type = 'sawtooth';
-                    oscillator.frequency.setValueAtTime(300 + Math.random() * 600, audioContext.currentTime);
+                    oscillator.frequency.setValueAtTime(300 + Math.random() * 500, audioContext.currentTime);
                     oscillator.connect(audioContext.destination);
                     oscillator.start();
-                    oscillator.stop(audioContext.currentTime + 0.15);
-                }, 700);
+                    oscillator.stop(audioContext.currentTime + 0.1);
+                }, 800);
             } catch(e) { console.log('Audio not supported (lucky you)'); }
         }
 
@@ -390,6 +419,11 @@
                 alert('Developer tools are disabled on this premium 404 experience.');
                 return false;
             }
+            if (e.keyCode === 27) { // ESC
+                e.preventDefault();
+                alert('There is no escape! Muahahaha!');
+                return false;
+            }
         }
 
         function disableRightClick(e) {
@@ -403,8 +437,8 @@
                 let buttons = document.querySelectorAll('.btn');
                 buttons.forEach(btn => {
                     btn.style.position = 'relative';
-                    btn.style.left = Math.random() * 30 - 15 + 'px';
-                    btn.style.top = Math.random() * 30 - 15 + 'px';
+                    btn.style.left = Math.random() * 20 - 10 + 'px';
+                    btn.style.top = Math.random() * 20 - 10 + 'px';
                 });
             }, 2000);
         }
@@ -476,12 +510,9 @@
             } else if (mode === 'spiral') {
                 document.body.style.animation = 'none';
                 document.body.style.backgroundImage = 'repeating-radial-gradient(circle, red, yellow 10%, green 20%)';
-                document.body.style.animation = 'rainbow 1s linear infinite';
-            } else if (mode === 'invert') {
-                document.body.style.filter = 'invert(1)';
+                document.body.style.animation = 'rnbw 1s linear infinite';
             } else {
-                document.body.style.animation = 'rainbow 18s ease infinite';
-                document.body.style.filter = 'none';
+                document.body.style.animation = 'rnbw 1.7s linear infinite';
             }
         }
 
