@@ -1,15 +1,8 @@
 ## Features of this Terrible 404 Page
-- Automatically goes fullscreen when loaded
-- Safety exit button in the bottom right corner
-- Rainbow animated background that never stops
-- Blinking text and shaking elements
-- Annoying sound effects using the Web Audio API
-- Random popup alerts
-- Fake redirect buttons
-- Moving buttons that are hard to click
-- Disabled right-click and keyboard shortcuts
-- Cursor trails that follow your mouse
-- Confetti falling constantly
-- Marquee text that scrolls across the screen
-- Comic Sans and Papyrus fonts (the worst typography)
-- Clashing colors and distracting animations
+- Full viewport takeover: The page takes up the entire screen without using the Fullscreen API
+- Fake browser UI: A fake address bar at the top to confuse users
+- Visual assault: Rainbow animated background, Comic Sans font, blinking text, and shaking elements
+- Annoying functionality: Random popup alerts, fake redirect buttons, moving buttons
+- Anti-user features: Disabled right-click, disabled keyboard shortcuts, cursor trails
+- Auditory annoyance: Web Audio API generates annoying sounds
+- No escape: The page prevents scrolling and attempts to close the browser
